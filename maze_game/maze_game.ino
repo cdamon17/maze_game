@@ -47,28 +47,31 @@ MeggyJrSimpleSetup(); // Required code, line 2 of 2.
 }
 void loop() // run over and over again
 {
-CheckButtonsPress();
-if (Button_Up)
-{
-if (ycoord<7);
-ycoord = ycoord++;
-  else ycoord = 0
+  CheckButtonsPress();
+  if (Button_Up)
+  {
+    if (ycoord<7);
+    ycoord = ycoord++;
+  }
 
+  if (Button_Right)
+  {
+    if (xcoord < 7);
+    xcoord = xcoord + 1; //also xcoord++
 }
-}
-if (Button_Right)
-{
-if (xcoord < 7)
-xcoord = xcoord + 1; //also xcoord++
-}
-if (Button_left)
-{
- if (xcoord < 7) 
- xcoord = xcoord - 1;
-}
+  if (Button_Left)
+  {
+     if (xcoord < 7); 
+     xcoord = xcoord - 1;
+  }
+  if (Button_Down)
+  {
+    if (ycoord<7);
+    ycoord = ycoord -1;
+  }
 DrawPx(xcoord,ycoord,Red); // Draws Dot
 DisplaySlate();
-delay(150);
+delay(50);
 ClearSlate();
 }
 // collisoin dectection simple
