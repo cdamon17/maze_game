@@ -37,41 +37,40 @@
  * http://www.arduino.cc/en/Tutorial/Blink
  */
 
-#include <MeggyJrSimple.h>    // Required code, line 1 of 2.
-
+#include <MeggyJrSimple.h> // Required code, line 1 of 2.
 // Global variables go here
-
 int xcoord = 3;
 int ycoord = 4;
-
-void setup()                    // run once, when the sketch starts
+void setup() // run once, when the sketch starts
 {
-  MeggyJrSimpleSetup();      // Required code, line 2 of 2.
+MeggyJrSimpleSetup(); // Required code, line 2 of 2.
 }
-
-void loop()                     // run over and over again
+void loop() // run over and over again
 {
-  CheckButtonsPress();
-    if (Button_Up)
-    {
-      if (ycoord<7);
-      ycoord = ycoord++;
-      else;
-        ycoord = 0
-    }
-  } 
-  if (Button_Right)
-  {
-    if (xcoord < 7)
-    xcoord = xcoord + 1; //also xcoord++
-  }
-  DrawPx(xcoord,ycoord,Red);  // Draws Dot
-  DisplaySlate();
-  delay(150);
-  ClearSlate();
+CheckButtonsPress();
+if (Button_Up)
+{
+if (ycoord<7);
+ycoord = ycoord++;
+  else ycoord = 0
 
 }
-
+}
+if (Button_Right)
+{
+if (xcoord < 7)
+xcoord = xcoord + 1; //also xcoord++
+}
+if (Button_left)
+{
+ if (xcoord < 7) 
+ xcoord = xcoord - 1;
+}
+DrawPx(xcoord,ycoord,Red); // Draws Dot
+DisplaySlate();
+delay(150);
+ClearSlate();
+}
 // collisoin dectection simple
 // if (readPx(xcoord+1,ycoord)==0);
 // xcoord++;
