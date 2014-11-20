@@ -39,42 +39,59 @@
 
 #include <MeggyJrSimple.h> // Required code, line 1 of 2.
 // Global variables go here
-int xcoord = 3;
-int ycoord = 4;
+int xcoord = 0;
+int ycoord = 0;
 void setup() // run once, when the sketch starts
 {
 MeggyJrSimpleSetup(); // Required code, line 2 of 2.
 }
 void loop() // run over and over again
 {
-  CheckButtonsPress();
-  if (Button_Up)
-  {
-    if (ycoord<7);
-    ycoord = ycoord++;
-  }
-
-  if (Button_Right)
-  {
-    if (xcoord < 7);
-    xcoord = xcoord + 1; //also xcoord++
-}
-  if (Button_Left)
-  {
-     if (xcoord < 7); 
-     xcoord = xcoord - 1;
-  }
-  if (Button_Down)
-  {
-    if (ycoord<7);
-    ycoord = ycoord -1;
-  }
-DrawPx(xcoord,ycoord,Red); // Draws Dot
-DisplaySlate();
-delay(50);
-ClearSlate();
+  shift();  // Johnathan Nakagawa helped with how shift code works
+  DrawPx(xcoord,ycoord,Red); // Draws Dot
+  DisplaySlate();
+  delay(50);
+  ClearSlate();
 }
 // collisoin dectection simple
 // if (readPx(xcoord+1,ycoord)==0);
 // xcoord++;
 
+void shift()
+{
+  CheckButtonsPress();
+  if (Button_Up)
+    {
+      if (ycoord < 7)
+        ycoord = ycoord + 1;
+    //else ycoord = 0;   should make dot go to bottom after reacing top,
+    //                   but it still does any way, not sure why
+    //if (ycoord>7)   code examened from other students,
+   // {               but can not move dot from edge of screen
+   //   ycoord=7;
+  //  }
+    }
+  
+  if (Button_Right)
+  {
+    if (xcoord < 7)
+      xcoord = xcoord + 1; //also xcoord++
+   // else xcoord = 0;
+  //  if (xcoord>7)
+  //  {
+   //   xcoord=7;
+  //  }
+  }
+  if (Button_Left)
+  {
+     if (xcoord>0) 
+       xcoord = xcoord - 1;
+    // else xcoord = 7;
+  }
+  if (Button_Down)
+  {
+    if (ycoord > 0)
+    ycoord = ycoord - 1;
+  //  else ycoord = 7;
+  }
+}
