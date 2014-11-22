@@ -47,8 +47,9 @@ MeggyJrSimpleSetup(); // Required code, line 2 of 2.
 }
 void loop() // run over and over again
 {
-  shift();  // Johnathan Nakagawa helped with how shift code works
-  DrawPx(xcoord,ycoord,Red); // Draws Dot
+  drawDot();
+  DrawPx(xcoord,ycoord,Blue);
+  shift();  // Jonathan Nakagawa helped with how shift code works
   DisplaySlate();
   delay(50);
   ClearSlate();
@@ -64,34 +65,35 @@ void shift()
     {
       if (ycoord < 7)
         ycoord = ycoord + 1;
-    //else ycoord = 0;   should make dot go to bottom after reacing top,
-    //                   but it still does any way, not sure why
-    //if (ycoord>7)   code examened from other students,
-   // {               but can not move dot from edge of screen
-   //   ycoord=7;
-  //  }
+        if (ReadPx(xcoord, ycoord)==Red)
+          ycoord = ycoord -1;
     }
   
   if (Button_Right)
-  {
-    if (xcoord < 7)
-      xcoord = xcoord + 1; //also xcoord++
-   // else xcoord = 0;
-  //  if (xcoord>7)
-  //  {
-   //   xcoord=7;
-  //  }
-  }
+   {
+     if (xcoord < 7)
+       xcoord = xcoord + 1; //also xcoord++
+       if (ReadPx(xcoord, ycoord)==Red)
+         xcoord = xcoord - 1;
+   }
   if (Button_Left)
-  {
-     if (xcoord>0) 
-       xcoord = xcoord - 1;
+   {
+    if (xcoord>0) 
+      xcoord = xcoord - 1;
+      if (ReadPx(xcoord, ycoord)==Red)
+        xcoord = xcoord + 1;
     // else xcoord = 7;
-  }
+    }
   if (Button_Down)
-  {
+   {
     if (ycoord > 0)
-    ycoord = ycoord - 1;
-  //  else ycoord = 7;
-  }
+      ycoord = ycoord - 1;
+      if (ReadPx(xcoord, ycoord)==Red) // thanks to Philip and Jonathan 
+                                      // for help with collision code
+        ycoord = ycoord + 1;
+   }
+}
+void drawDot()
+{
+  DrawPx(3,3,Red);
 }
