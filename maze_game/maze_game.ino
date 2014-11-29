@@ -92,6 +92,11 @@ void shift()
                                       // for help with collision code
         ycoord = ycoord + 1;
    }
+  if (ReadPx(7,7)==Blue)
+    {
+      delay(5000);
+      ClearSlate();
+    }
 }
 void drawDot()
 {
