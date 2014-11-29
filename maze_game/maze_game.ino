@@ -47,7 +47,7 @@ MeggyJrSimpleSetup(); // Required code, line 2 of 2.
 }
 void loop() // run over and over again
 {
-  drawDot();
+  drawwall();
   DrawPx(xcoord,ycoord,Blue);
   shift();  // Jonathan Nakagawa helped with how shift code works
   DisplaySlate();
@@ -92,13 +92,56 @@ void shift()
                                       // for help with collision code
         ycoord = ycoord + 1;
    }
+  if (ReadPx(7,0)==Blue)
+    {
+      SetAuxLEDsBinary(B11000000);
+    }
+  if (ReadPx(0,2)==Blue)
+    {
+      SetAuxLEDsBinary(B11110000);
+    }
+  if (ReadPx(0,4)==Blue)
+    {
+      SetAuxLEDsBinary(B11111100);
+    }
+  if (ReadPx(6,4)==Blue)
+    {
+      SetAuxLEDsBinary(B11111111);
+    }
   if (ReadPx(7,7)==Blue)
     {
-      delay(5000);
+      
       ClearSlate();
     }
 }
-void drawDot()
+void drawwall()
 {
+  DrawPx(0,1,Red);
+  DrawPx(0,3,Red);
+  DrawPx(0,5,Red);
+  DrawPx(0,6,Red);
+  DrawPx(0,7,Red);
+  DrawPx(1,1,Red);
+  DrawPx(1,3,Red);
+  DrawPx(2,1,Red);
+  DrawPx(2,5,Red);
+  DrawPx(2,6,Red);
+  DrawPx(3,1,Red);
+  DrawPx(3,2,Red);
   DrawPx(3,3,Red);
+  DrawPx(3,5,Red);
+  DrawPx(4,1,Red);
+  DrawPx(4,5,Red);
+  DrawPx(4,7,Red);
+  DrawPx(5,1,Red);
+  DrawPx(5,3,Red);
+  DrawPx(5,4,Red);
+  DrawPx(5,5,Red);
+  DrawPx(5,7,Red);
+  DrawPx(6,3,Red);
+  DrawPx(6,7,Red);
+  DrawPx(7,1,Red);
+  DrawPx(7,2,Red);
+  DrawPx(7,3,Red);
+  
 }
